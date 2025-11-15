@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/playwright:v1.40.0-focal
+FROM mcr.microsoft.com/playwright:v1.56.1-focal
 
 # Crear directorio de trabajo
 WORKDIR /app
@@ -8,6 +8,9 @@ COPY package*.json ./
 
 # Instalar dependencias
 RUN npm install --production
+
+# Instalar navegadores de Playwright
+RUN npx playwright install chromium
 
 # Copiar código
 COPY . .
